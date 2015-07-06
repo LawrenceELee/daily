@@ -9,8 +9,11 @@ demos:
     'self' as 1st arg to all functions.
 
     *Client inherits from 'object' class by using 3.x style.
-    by doing so it comes with some built-in functions like _____ ?
     more info: http://stackoverflow.com/questions/4015417/python-class-inherits-object
+
+    by doing so it comes with some built-in functions like:
+    >>> dir(object)
+    ['__class__', '__delattr__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__gt__', '__hash__', '__init__', '__le__', '__lt__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__']
 
     *using subprocess to have OS eval "commands".
 
@@ -53,7 +56,10 @@ class Client(object):
         print("==================================================\n")
 
 
-#driver/tester
+#driver/tester.
+#if __name__ ... prevents 'import' from running program in python console.
+#can further modularize program by refactoring driver code into main()
+#and call each of the sub-function separately.
 if __name__ == '__main__':
     server = Client('127.0.0.1', 'my_local_computer')
     server.ping('8.8.8.8')      #google public DNS
