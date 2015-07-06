@@ -36,10 +36,23 @@ def log(info):
     input: a tuple containing (name, age, height)
     return: none
     '''
-    f = open('easy1.data', 'a') #r read-only, w read/write, a append.
-    f.write(str(info)) #can't write tuple to file, convert to str first.
-    f.write('\n')
-    f.close()
+    #it is a good practice to use 'try/finally' in case an errors occur.
+    #pre v2.5 style
+    '''
+    try:
+        f = open('easy1.data', 'a') #r read-only, w read/write, a append.
+        f.write(str(info)) #can't write tuple to file, convert to str first.
+        f.write('\n')
+    finally:
+        f.close()
+    '''
+    #v2.5+ idiom is to use the 'with' keyword.
+    with open('easy1.data', 'a') as f:
+        f.write(str(info))
+        f.write('\n')
+        #Even though we didn’t call close(), the context manager closes it
+        #after exiting the 'with' block
+
 
 def main():
     '''
