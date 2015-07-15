@@ -21,19 +21,14 @@ Note: you can write a similar program using perl, but it would be more
 verbose and you would have to learn perl syntax (which isn't as pleasant as python).
 
 '''
+import subprocess   #used to issue commands to OS.
 
-
-
-import subprocess
-
-
-
-
-#server class inherits from object, will implicitly inherit from object
+#client class inherits from object, will implicitly inherit from object
 #if not specified.
-#python allows for multiple inheritance Client(type1, type2, etc) something
-#java doesn't allow.
-class Client(object):
+#python allows for multiple inheritance PingClient(type1, type2, etc)
+#something java doesn't allow.
+#What is diff between multiple inheritance vs composition?
+class PingClient(object):
 
     #like a constructor, 'self' refers to _this_ instance.
     #static-like functions have to pass 'self' as first arg.
@@ -61,6 +56,6 @@ class Client(object):
 #can further modularize program by refactoring driver code into main()
 #and call each of the sub-function separately.
 if __name__ == '__main__':
-    server = Client('127.0.0.1', 'my_local_computer')
-    server.ping('8.8.8.8')      #google public DNS
-    server.ping('4.2.2.2')      #Level3 public DNS
+    pc = PingClient('127.0.0.1', 'my_local_computer')
+    pc.ping('8.8.8.8')      #google public DNS
+    pc.ping('4.2.2.2')      #Level3 public DNS
